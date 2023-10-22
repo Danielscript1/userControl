@@ -11,6 +11,8 @@ import Paper from '@mui/material/Paper';
 
 export default function UserTable({excelData,loading}) {
 
+    const [itemSelecionado,setItemSelecionando] = React.useState([])
+
     if(excelData.length === 0 && loading){
         return "carregando..."
     }
@@ -32,7 +34,16 @@ function countClientOccurrences(data) {
 
 const clientOccurrences = countClientOccurrences(excelData);
 
-console.log("clientOccurrences",clientOccurrences)
+const visualizado = (data) => {
+  const exists = itemSelecionado.some(item => item === data);
+  if (exists) {
+    const filteredItems = itemSelecionado.filter(item => item !== data);
+    setItemSelecionando(filteredItems);
+  } else {
+    setItemSelecionando([...itemSelecionado, data]);
+  }
+}
+
 
   return (
     <TableContainer component={Paper}>
@@ -54,12 +65,13 @@ console.log("clientOccurrences",clientOccurrences)
         <TableBody>
         {excelData
   .filter((row, index, self) => {
-    return self.findIndex((r) => r['ID Comanda'] === row['ID Comanda']) === index;
+    return self.findIndex((r) => r['ID Cliente'] === row['ID Cliente']) === index;
   })
   .map((row, index) => (
     <TableRow
+     onClick={()=>visualizado(row['ID Cliente'])}
       key={index}
-      sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+      sx={{ '&:last-child td, &:last-child th': { border: 0 },backgroundColor:itemSelecionado[index] === row['ID Cliente'] ? 'green':"",cursor:"pointer"  }}
     >
       <TableCell component="th" scope="row">
         {row['ID Comanda']}

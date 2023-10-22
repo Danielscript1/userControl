@@ -50,7 +50,7 @@ function Attachment({setExcelData,setloading}) {
             id="file-input"
             type="file"
             accept=".xlsx, .xls"
-            style={{ display: 'none' }}
+            style={{ display: 'none',padding:"20%" }}
             onChange={handleFileChange}
           />
           <InputAdornment position="end">
@@ -61,6 +61,7 @@ function Attachment({setExcelData,setloading}) {
         <span>{fileName.length >= 13 ?
         fileName.substring(0,13) + '...':fileName
         }</span>
+     
       
         
     </Container>

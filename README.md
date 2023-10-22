@@ -1,3 +1,3 @@
 ## Ranking de vendas
 
-### recebe um arquivo de excel , retorna quantidade de vezes que nome de usuario aparece , ordena conforme a data recente
+### Recebe um arquivo de Excel, contabiliza a quantidade de vezes que o nome de usuário aparece, ordena os registros com base na data mais recente, permite a seleção e desseleção de usuários
