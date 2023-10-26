@@ -43,7 +43,7 @@ const visualizado = (data) => {
     setItemSelecionando([...itemSelecionado, data]);
   }
 }
-
+excelData.sort((a, b) => new Date(b['Data da Comanda']) - new Date(a['Data da Comanda']));
 
   return (
     <TableContainer component={Paper}>
